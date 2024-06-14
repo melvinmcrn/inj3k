@@ -12,5 +12,8 @@
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "homepage": "https://github.com/melvinmcrn/inj3k#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "ISC"
 }
