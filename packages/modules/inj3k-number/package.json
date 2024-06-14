@@ -1,6 +1,6 @@
 {
   "name": "@inj3k/number",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "A very useful JS/TS library to handle number for everyone",
   "main": "index.js",
   "module": "dist/index.mjs",
