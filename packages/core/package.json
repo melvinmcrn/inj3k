@@ -1,0 +1,19 @@
+{
+  "name": "inj3k",
+  "version": "0.1.0",
+  "description": "A very useful JS/TS library for everyone",
+  "main": "index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  }
+}
