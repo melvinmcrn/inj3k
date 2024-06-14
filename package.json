@@ -2,6 +2,10 @@
   "name": "inj3k-root",
   "private": true,
   "version": "0.0.0",
+  "workspaces": [
+    "packages/modules/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "npx lerna run build",
     "publish": "npx lerna publish"
