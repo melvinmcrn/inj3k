@@ -1,33 +1,39 @@
 name: Release
 on:
   push:
-    branches:
-      - main
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-permissions: {} #reset
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
 jobs:
-  release:
-    # IMPORTANT: prevent this action from running on forks
-    if: github.repository == 'barisbll/dummy-lib'
-    permissions:
-      contents: write # to create release (changesets/action)
-      pull-requests: write # to create pull request (changesets/action)
-    name: Release
+  check:
+    name: Check
+    uses: ./.github/workflows/check.yml
+    secrets: inherit
+
+  changesets:
+    name: Changesets
+    needs: check
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        with:
-            version: 6.0.2
-      - run: pnpm i
-      - name: Publish to pnpm
+      - uses: actions/checkout@v4
+        # with:
+        #   # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+        #   fetch-depth: 0
+        #   submodules: true
+
+      - name: Setup and install
+        uses: ./.github/actions/setup-and-install
+
+      - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm run release
+          title: 'release'
+          commit: 'chore: version packages'
+          version: pnpm changeset:version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

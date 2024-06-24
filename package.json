@@ -1,26 +1,40 @@
 {
   "name": "inj3k-root",
   "private": true,
-  "version": "0.0.0",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/melvinmcrn/inj3k"
   },
   "scripts": {
     "build": "pnpm run --r --parallel build",
-    "publish": "npx lerna publish",
-    "preinstall": "npx only-allow pnpm"
+    "changeset:version": "changeset version && pnpm install --lockfile-only",
+    "changeset:publish": "pnpm build && changeset publish",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "pnpm prettier . --write --config .prettierrc",
+    "lint:check": "pnpm prettier . --check --config .prettierrc",
+    "format": "pnpm eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:typecheck": "vitest run --typecheck",
+    "typecheck": "tsc --noEmit"
   },
   "license": "ISC",
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.5",
+    "@eslint/compat": "^1.1.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
-    "eslint": "^9.4.0",
+    "@types/node": "^20.14.7",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "eslint": "^9.5.0",
     "eslint-plugin-unused-imports": "^4.0.0",
-    "eslint-plugin-valtio": "^0.6.4",
-    "lerna": "^8.1.3"
+    "globals": "^15.6.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
   },
   "packageManager": "pnpm@9.4.0"
 }

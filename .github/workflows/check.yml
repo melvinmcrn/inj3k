@@ -1,0 +1,77 @@
+name: Check
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup and install
+        uses: ./.github/actions/setup-and-install
+
+      - name: Lint code
+        run: pnpm format && pnpm lint
+
+        # Auto commit new changes from linting
+        # ref: https://github.com/stefanzweifel/git-auto-commit-action
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commit_message: 'chore: format and lint'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  build:
+    name: Build
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup and install
+        uses: ./.github/actions/setup-and-install
+
+      - name: Build
+        run: pnpm build
+
+  types:
+    name: Types
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup and install
+        uses: ./.github/actions/setup-and-install
+
+      - name: Check code types
+        run: pnpm typecheck
+
+      - name: Check test types
+        run: pnpm test:typecheck
+
+  test:
+    name: Test
+    needs: types
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup and install
+        uses: ./.github/actions/setup-and-install
+
+      - name: Run test
+        run: pnpm test
