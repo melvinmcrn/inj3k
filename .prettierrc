@@ -5,10 +5,8 @@
   "proseWrap": "always",
   "tabWidth": 2,
   "printWidth": 140,
-  "plugins": [
-    "@trivago/prettier-plugin-sort-imports"
-  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "importOrderCaseInsensitive": false
+  "importOrderCaseInsensitive": false,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
