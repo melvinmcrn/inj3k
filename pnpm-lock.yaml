@@ -60,7 +60,14 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
 
-  packages/modules/inj3k-number: {}
+  packages/modules/inj3k-number:
+    dependencies:
+      tsup:
+        specifier: ^8.1.0
+        version: 8.1.0(postcss@8.4.38)(typescript@5.4.5)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
 packages:
 
