@@ -37,7 +37,7 @@
     "noErrorTruncation": true,
 
     "paths": {
-      "@infinit/*": ["packages/*/src/index.ts"]
+      "@inj3k/*": ["packages/*/src/index.ts"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */
   }
 }
