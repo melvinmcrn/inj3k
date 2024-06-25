@@ -5,8 +5,8 @@ export default defineWorkspace([
   {
     extends: './vite.config.ts',
     test: {
-      name: '@infinit/infinit-core',
-      include: ['./packages/infinit-core/src/**/*.test.ts'],
+      name: '@inj3k/core',
+      include: ['./packages/core/src/**/*.test.ts'],
       environment: 'node',
     },
   },
