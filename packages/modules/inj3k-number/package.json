@@ -1,6 +1,6 @@
 {
   "name": "@melvinmcrn/number",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A very useful JS/TS library to handle number for everyone",
   "main": "index.js",
   "module": "dist/index.mjs",
