@@ -13,20 +13,20 @@ jobs:
     uses: ./.github/workflows/check.yml
     secrets: inherit
 
-  size:
-    name: Size
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  # size:
+  #   name: Size
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Setup and install
-        uses: ./.github/actions/setup-and-install
+  #     - name: Setup and install
+  #       uses: ./.github/actions/setup-and-install
 
-        # ref: https://github.com/preactjs/compressed-size-action
-      # - name: Report build size
-      #   uses: preactjs/compressed-size-action@v2
-      #   with:
-      #     pattern: 'packages/**/dist/**'
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+  #       # ref: https://github.com/preactjs/compressed-size-action
+  #     - name: Report build size
+  #       uses: preactjs/compressed-size-action@v2
+  #       with:
+  #         pattern: 'packages/**/dist/**'
+  #         repo-token: ${{ secrets.GITHUB_TOKEN }}
