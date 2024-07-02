@@ -4,7 +4,9 @@
 
 ### Minor Changes
 
-- [#14](https://github.com/melvinmcrn/inj3k/pull/14) [`26491f7`](https://github.com/melvinmcrn/inj3k/commit/26491f7b5b578cf9a66dea7a3e1140d64e78ab70) Thanks [@melvinmcrn](https://github.com/melvinmcrn)! - Fix: export Pow module
+- [#14](https://github.com/melvinmcrn/inj3k/pull/14)
+  [`26491f7`](https://github.com/melvinmcrn/inj3k/commit/26491f7b5b578cf9a66dea7a3e1140d64e78ab70) Thanks
+  [@melvinmcrn](https://github.com/melvinmcrn)! - Fix: export Pow module
 
 ## 0.2.0
 
